@@ -1,34 +1,420 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tucker Huth's Projects</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        h1 {
-            color: #ff4500;
-            margin-top: 50px;
-        }
-        p {
-            font-size: 18px;
-        }
-        .blink {
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tucker Huth</title>
+<meta name="description" content="Personal projects by Tucker Huth — dad, tinkerer, slopcoder. A space game for my son, an explorable 3D hobbit hole, and more on the way.">
+<meta property="og:title" content="Tucker Huth">
+<meta property="og:description" content="Personal projects — a space game for my son, an explorable 3D hobbit hole, and more on the way.">
+<meta property="og:url" content="https://tuckerhuth.com/">
+<meta property="og:type" content="website">
+<style>
+/* Instrument Serif — self-hosted */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/instrument-serif-italic-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/instrument-serif-italic-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/instrument-serif-normal-latin-ext.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/instrument-serif-normal-latin.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html, body { margin: 0; padding: 0; }
+body { background: #0f0b06; }
+a { color: #e0a34a; text-decoration: none; }
+a:hover { color: #efc074; }
+::-webkit-scrollbar { width: 0; height: 0; }
+@keyframes cueBob {
+  0%, 100% { transform: translateY(0); opacity: .55; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+.scroller {
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  background: #0f0b06;
+  color: #f2ece0;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  --accent: #e0a34a;
+}
+
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px clamp(24px, 6vw, 110px);
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+.topbar .name {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+  letter-spacing: .01em;
+  color: #f2ece0;
+}
+.topbar .counter {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: .18em;
+  color: #f2ece0;
+}
+
+.dots {
+  position: fixed;
+  top: 50%;
+  right: clamp(16px, 3vw, 40px);
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+.dots button {
+  width: 2px;
+  height: 10px;
+  background: rgba(242,236,224,.32);
+  border-radius: 2px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: height .3s ease, background .3s ease;
+  display: block;
+}
+.dots button.active {
+  height: 24px;
+  background: var(--accent);
+}
+
+section {
+  position: relative;
+  height: 100vh;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.kicker {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: .24em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+/* Intro */
+.intro {
+  background: radial-gradient(130% 100% at 50% 18%, #3d2c17 0%, #1c130a 52%, #0d0905 100%);
+}
+.intro .vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(80% 60% at 50% 45%, transparent 40%, rgba(8,5,2,.6) 100%);
+}
+.intro h1 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(56px, 12vw, 150px);
+  line-height: .94;
+  margin: 0;
+  color: #f6f0e4;
+  letter-spacing: -.01em;
+}
+.intro .tagline {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(19px, 2.6vw, 30px);
+  line-height: 1.35;
+  color: rgba(242,236,224,.72);
+  margin: 28px auto 0;
+  max-width: 560px;
+}
+.scroll-cue {
+  position: absolute;
+  bottom: 38px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: rgba(242,236,224,.55);
+}
+.scroll-cue .arrow {
+  font-size: 18px;
+  line-height: 1;
+  animation: cueBob 1.8s ease-in-out infinite;
+  color: var(--accent);
+}
+
+/* Project panels */
+.project { background: #0f0b06; }
+.project .shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.project .fade-bottom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, rgba(9,6,3,.94) 2%, rgba(9,6,3,.4) 46%, rgba(9,6,3,.12) 100%);
+}
+.project .fade-left {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(9,6,3,.6), transparent 58%);
+}
+.project .info {
+  position: absolute;
+  left: clamp(24px, 6vw, 110px);
+  bottom: clamp(64px, 13vh, 150px);
+  max-width: 660px;
+  z-index: 2;
+  pointer-events: none;
+}
+.project h2 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(46px, 8vw, 104px);
+  line-height: .95;
+  margin: 0;
+  color: #f6f0e4;
+  letter-spacing: -.01em;
+}
+.project .blurb {
+  font-size: clamp(15px, 1.7vw, 19px);
+  line-height: 1.55;
+  color: rgba(242,236,224,.78);
+  margin: 22px 0 30px;
+  max-width: 480px;
+}
+.cta {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 24px;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: #f6f0e4;
+  transition: background .25s, color .25s;
+}
+.cta:hover {
+  background: var(--accent);
+  color: #1a1208;
+}
+.cta .arrow { font-size: 16px; }
+
+/* Closing */
+.closing {
+  background: radial-gradient(120% 100% at 50% 80%, #241a10 0%, #130d07 55%, #0c0805 100%);
+}
+.closing h2 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  font-size: clamp(42px, 8vw, 96px);
+  line-height: .98;
+  margin: 0;
+  color: #f6f0e4;
+}
+.closing .tagline {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: clamp(17px, 2.3vw, 26px);
+  line-height: 1.4;
+  color: rgba(242,236,224,.7);
+  margin: 24px auto 40px;
+  max-width: 520px;
+}
+.closing .links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 22px;
+  border: 1px solid rgba(242,236,224,.28);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f2ece0;
+  transition: border-color .25s;
+}
+.pill:hover { border-color: var(--accent); color: #f2ece0; }
+.closing .domain {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: .22em;
+  color: rgba(242,236,224,.4);
+}
+</style>
 </head>
 <body>
-    <h1>Welcome to TuckerHuth.com!</h1>
-    <p>This is my <span class="blink">super simple</span> project showcase.</p>
-    <p>Projects coming soon... or maybe never. Who knows?</p>
+
+<div class="scroller" id="scroller">
+
+  <div class="topbar">
+    <span class="name">Tucker Huth</span>
+    <span class="counter"><span id="counter">01</span> / 04</span>
+  </div>
+
+  <div class="dots" id="dots" aria-label="Panel navigation">
+    <button class="active" aria-label="Go to panel 1"></button>
+    <button aria-label="Go to panel 2"></button>
+    <button aria-label="Go to panel 3"></button>
+    <button aria-label="Go to panel 4"></button>
+  </div>
+
+  <!-- 00 · INTRO -->
+  <section class="intro centered" data-panel>
+    <div class="vignette"></div>
+    <div style="position:relative;z-index:2;padding:0 24px">
+      <div class="eyebrow" style="margin-bottom:26px">Personal Projects</div>
+      <h1>Tucker Huth</h1>
+      <p class="tagline">Dad, tinkerer, slopcoder.</p>
+    </div>
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <span class="arrow">&darr;</span>
+    </div>
+  </section>
+
+  <!-- 01 · THEO BLASTOFF -->
+  <section class="project" data-panel>
+    <img class="shot" src="assets/theo.jpg" alt="Theo Blastoff — a rocket launching through a starfield" loading="lazy">
+    <div class="fade-bottom"></div>
+    <div class="fade-left"></div>
+    <div class="info">
+      <div class="kicker">01 &nbsp;&middot;&nbsp; /theo-blastoff</div>
+      <h2>Theo Blastoff</h2>
+      <p class="blurb">A little space game I built for my son — tap to launch, dodge the debris, and see how far you can blast off before you crash.</p>
+      <a class="cta" href="https://tuckerhuth.com/theo-blastoff/" target="_blank" rel="noopener">Play the game <span class="arrow">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- 02 · BAG END -->
+  <section class="project" data-panel>
+    <img class="shot" src="assets/bag-end.jpg" alt="Bag End — inside a cozy 3D hobbit hole" loading="lazy">
+    <div class="fade-bottom"></div>
+    <div class="fade-left"></div>
+    <div class="info">
+      <div class="kicker">02 &nbsp;&middot;&nbsp; /bag-end</div>
+      <h2>Bag End</h2>
+      <p class="blurb">An explorable 3D model of Bilbo's hobbit hole. Wander the round-doored halls, poke around the study, and stay for second breakfast.</p>
+      <a class="cta" href="https://tuckerhuth.com/bag-end" target="_blank" rel="noopener">Step inside <span class="arrow">&rarr;</span></a>
+    </div>
+  </section>
+
+  <!-- 03 · CLOSING -->
+  <section class="closing centered" data-panel>
+    <div style="position:relative;z-index:2;padding:0 24px">
+      <div class="eyebrow" style="margin-bottom:24px">The workshop</div>
+      <h2>More on the way.</h2>
+      <p class="tagline">New experiments land here whenever I finish tinkering with them.</p>
+      <div class="links">
+        <a class="pill" href="mailto:tuckerhuth@gmail.com">Email</a>
+        <a class="pill" href="https://github.com/tuckerhuth" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <div class="domain">tuckerhuth.com</div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  var scroller = document.getElementById('scroller');
+  var counter = document.getElementById('counter');
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#dots button'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('[data-panel]'));
+
+  dots.forEach(function (dot, i) {
+    dot.addEventListener('click', function () {
+      scroller.scrollTo({ top: i * scroller.clientHeight, behavior: 'smooth' });
+    });
+  });
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var i = panels.indexOf(entry.target);
+      if (i < 0) return;
+      counter.textContent = String(i + 1).padStart(2, '0');
+      dots.forEach(function (dot, j) {
+        dot.classList.toggle('active', j === i);
+      });
+    });
+  }, { root: scroller, threshold: 0.55 });
+
+  panels.forEach(function (p) { observer.observe(p); });
+})();
+</script>
+
 </body>
 </html>
