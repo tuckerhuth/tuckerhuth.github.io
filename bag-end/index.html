@@ -124,12 +124,20 @@
       position: fixed; inset: 0; pointer-events: none;
       box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.45);
     }
+
+    /* Sleep fade-to-black */
+    #fade {
+      position: fixed; inset: 0; background: #050403; opacity: 0;
+      pointer-events: none; transition: opacity 1s ease; z-index: 20;
+    }
+    #fade.on { opacity: 1; }
   </style>
-  <script type="module" crossorigin src="./assets/index-CApEekUn.js"></script>
+  <script type="module" crossorigin src="./assets/index-BIn1qpIM.js"></script>
 </head>
 <body>
   <div id="app"></div>
   <div id="vignette"></div>
+  <div id="fade"></div>
   <div id="ui">
     <div id="crosshair"></div>
     <div id="prompt"><kbd>E</kbd><span id="prompt-text"></span></div>
