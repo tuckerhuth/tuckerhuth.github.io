@@ -1,0 +1,37 @@
+[
+  {
+    "id": "6898e0b9-3a87-47fb-be94-82c8519e3e49",
+    "title": "A Tiny Garden, A Big Discovery",
+    "description": "A friendly blue robot looks closely at a very small garden.",
+    "minutes": 1,
+    "cover": "images/c5058244bc6568f43150.webp"
+  },
+  {
+    "id": "20862caf-f1ae-44f5-86b9-f295cd48c319",
+    "title": "Watts and the Man Who Said Hush",
+    "description": "A playful dog with a surprising talent discovers something strange on a perfectly tidy street.",
+    "minutes": 10,
+    "cover": "images/3b90f7e1e23ff5f75d03.webp"
+  },
+  {
+    "id": "9a530fb3-9e46-4c2b-a959-3034647e109e",
+    "title": "Watts and the Too-Tidy Street",
+    "description": "A scruffy little dog with a shining secret discovers something strange on a perfectly tidy suburban street.",
+    "minutes": 10,
+    "cover": "images/aff2199c3a448353285e.webp"
+  },
+  {
+    "id": "316e7c8f-adc7-4dd6-8732-9e8f7ccac06a",
+    "title": "The Chair That Said Count Again",
+    "description": "At a most unusual umbrella factory, a dishonest man discovers that his desk chair has been listening.",
+    "minutes": 5,
+    "cover": "images/0fe026c2e366de821e4c.webp"
+  },
+  {
+    "id": "b9681f71-c0df-4611-aa17-78fb1239560f",
+    "title": "Watts and the Too-Perfect Street",
+    "description": "An ordinary-looking dog with an extraordinary bright secret discovers something strange on Marigold Lane.",
+    "minutes": 10,
+    "cover": "images/4f166475a103b36ee896.webp"
+  }
+]

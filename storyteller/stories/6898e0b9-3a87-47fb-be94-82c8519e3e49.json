@@ -1,0 +1,25 @@
+{
+  "id": "6898e0b9-3a87-47fb-be94-82c8519e3e49",
+  "title": "A Tiny Garden, A Big Discovery",
+  "description": "A friendly blue robot looks closely at a very small garden.",
+  "minutes": 1,
+  "passages": [
+    {
+      "id": "p1",
+      "sceneId": "garden",
+      "text": "Bram, the blue robot, knelt beside a garden no bigger than a doormat. He leaned close to a pink flower. Its petals curled like little cups, and its golden middle held a sprinkle of yellow dust. “Hello, tiny garden,” Bram whispered. A drop of dew trembled on a leaf. Bram held very still."
+    },
+    {
+      "id": "p2",
+      "sceneId": "garden",
+      "text": "He examined the leaf without touching it. Thin lines branched across its green surface like paths on a map. Along its edge were tiny points, each smaller than his smallest screw. Bram looked from leaf to flower, then flower to leaf. “You are small,” he said, smiling, “but there is so much of you to see.”"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "garden",
+      "alt": "A friendly blue robot kneels beside a tiny garden, examining richly detailed flowers and green leaves.",
+      "image": "images/c5058244bc6568f43150.webp"
+    }
+  ]
+}

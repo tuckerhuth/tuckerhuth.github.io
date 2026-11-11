@@ -1,0 +1,115 @@
+{
+  "id": "316e7c8f-adc7-4dd6-8732-9e8f7ccac06a",
+  "title": "The Chair That Said Count Again",
+  "description": "At a most unusual umbrella factory, a dishonest man discovers that his desk chair has been listening.",
+  "minutes": 5,
+  "passages": [
+    {
+      "id": "p1",
+      "sceneId": "office",
+      "text": "At the very top of the Umbrella Works stood an office with a view of every chimney in town. Inside lived a desk, a clock, and a splendid velvet chair. The chair had five little wheels and one bright brass button. It also had a secret."
+    },
+    {
+      "id": "p2",
+      "sceneId": "office",
+      "text": "Mr. Silas Snip worked there. Downstairs, his coworkers made marvelous umbrellas: umbrellas that chirped when it rained, umbrellas with pockets for sandwiches, and one enormous umbrella that kept an entire horse dry. Mr. Snip counted the money."
+    },
+    {
+      "id": "p3",
+      "sceneId": "office",
+      "text": "On Fridays, he divided the money among everyone who had earned it. One share for Ada, who stitched. One for Ben, who bent the handles. One for little Mrs. Moss, who tested every umbrella beneath a watering can."
+    },
+    {
+      "id": "p4",
+      "sceneId": "office",
+      "text": "But this Friday, Mr. Snip made a bad decision. He slipped some of their money into his own purse. Then he told them, “There wasn't enough this week.” Behind him, the velvet chair gave a tiny squeak."
+    },
+    {
+      "id": "p5",
+      "sceneId": "office",
+      "text": "“Old furniture,” said Mr. Snip. He bought himself a magnificent cake with seventeen cherries. His coworkers shared a single bun. That afternoon, the chair rolled away whenever he tried to sit. Only an inch. Just enough."
+    },
+    {
+      "id": "p6",
+      "sceneId": "office",
+      "text": "Now, this chair had been made long ago by a carpenter who built furniture for fairy judges. She made stools that objected to nonsense and cupboards that refused to hide stolen things. This was her last chair. Its brass button was shaped like a listening ear."
+    },
+    {
+      "id": "p7",
+      "sceneId": "office",
+      "text": "Mr. Snip knew none of this. He only knew that someone kept whispering, “Count again.” He looked in the cupboard. He looked in his hat. He even looked inside the cake box. There was nobody there."
+    },
+    {
+      "id": "p8",
+      "sceneId": "office",
+      "text": "On Monday, Ada came upstairs. “Our money is missing,” she said. Mr. Snip could have opened his purse. He could have told the truth. Instead, he said, “Perhaps Ben took it.” The clock stopped ticking. The brass button turned warm."
+    },
+    {
+      "id": "p9",
+      "sceneId": "office",
+      "text": "“That,” whispered the chair, “was your decision.” Mr. Snip spun around. “Who said that?” The chair rolled toward him. Squeak. Roll. Squeak. Mr. Snip backed against the desk, clutching his purse. “Chairs,” he announced, “are supposed to behave!”"
+    },
+    {
+      "id": "p10",
+      "sceneId": "swallow",
+      "text": "The velvet seat opened like a very large sandwich. The curved wooden arms gathered Mr. Snip in. “Oh!” he said. Then, “Oh, REALLY!” With one soft, enormous WHUMP, the chair swallowed him up. There were no teeth. There was only velvet, darkness, and the smell of furniture polish."
+    },
+    {
+      "id": "p11",
+      "sceneId": "swallow",
+      "text": "Inside, Mr. Snip heard a weary voice. “At last.” “Who's there?” “The person who was this chair before you.” Mr. Snip tried to stand. His knees wanted to bend in five different directions. Somewhere underneath him, a little wheel squeaked."
+    },
+    {
+      "id": "p12",
+      "sceneId": "sentence",
+      "text": "Then the velvet settled. Beside the desk stood a small elderly man, stretching his fingers. And where Mr. Snip had been was a desk chair: teal velvet, wooden arms, five little wheels. Beneath its brass button curled the tiniest moustache-shaped stitch."
+    },
+    {
+      "id": "p13",
+      "sceneId": "sentence",
+      "text": "The elderly man was Mr. Wren. Long ago, he had cheated the people at his own workshop. The chair had swallowed him, too. For thirty years he had been that chair, listening, waiting, and learning exactly how long a working day could feel."
+    },
+    {
+      "id": "p14",
+      "sceneId": "sentence",
+      "text": "“My turn is finished,” said Mr. Wren. “And yours has begun.” Mr. Snip tried to shout. What came out was SQUEAK. He tried to run. His wheels rolled him into the wastepaper basket. Bump."
+    },
+    {
+      "id": "p15",
+      "sceneId": "sentence",
+      "text": "Mr. Wren picked up the fallen purse and called the coworkers upstairs. Together they counted every coin. Ada found her missing share. Ben found his. Mrs. Moss found enough to buy a bun all to herself. “Well,” she said, looking at the chair."
+    },
+    {
+      "id": "p16",
+      "sceneId": "sentence",
+      "text": "Mr. Wren wriggled his toes inside his shoes. He had missed toes. He had missed shoes. Most of all, he had missed opening a door and choosing to walk through it. But first, he stayed to help put the accounts right."
+    },
+    {
+      "id": "p17",
+      "sceneId": "sentence",
+      "text": "Mr. Snip stayed, too. He had no choice about that. His sentence was thirty years, just as Mr. Wren's had been. Thirty years of holding people up, instead of helping himself to what belonged to them."
+    },
+    {
+      "id": "p18",
+      "sceneId": "sentence",
+      "text": "Outside, the umbrellas chirped in the rain. Inside, Ada sat down to finish her work. The chair supported her carefully. It was going to be a very long time before Mr. Snip stood up again. Squeak, said the chair."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "office",
+      "alt": "Mr. Snip sits by a teal velvet desk chair, hiding coins while his coworkers build unusual umbrellas.",
+      "image": "images/0fe026c2e366de821e4c.webp"
+    },
+    {
+      "id": "swallow",
+      "alt": "The enchanted desk chair folds around Mr. Snip like a giant velvet sandwich.",
+      "image": "images/4417905f6318be49ecb3.webp"
+    },
+    {
+      "id": "sentence",
+      "alt": "A freed elderly man stands beside the teal desk chair that Mr. Snip has become.",
+      "image": "images/d225ef192a6554e3151f.webp"
+    }
+  ]
+}
